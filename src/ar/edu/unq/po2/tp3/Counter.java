@@ -53,7 +53,8 @@ public class Counter {
 		return isEven;
 	}
 
-	public int getMultiplesOfOcurrences(int otherNumber) {
+	// Devuelve la cantidad de multiplos de otherNumber que contiene la lista
+	public int getMultiplesOfAmount(int otherNumber) {
 		int multiplesOfAmount = 0;
 		for (int i=0; i < this.getNumbers().size(); i++) {
 			Integer number = this.getNumbers().get(i);
@@ -64,6 +65,7 @@ public class Counter {
 		return multiplesOfAmount;
 	}
 
+	// Devuelve true si el numero number es multiplo del numero otherNumber
 	private boolean isMultipleOf(Integer number, int otherNumber) {
 		boolean isMultiple = false;
 		if (number.intValue() % otherNumber == 0) {

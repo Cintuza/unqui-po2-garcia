@@ -59,7 +59,7 @@ class CounterTestCase {
 	@Test
 	public void testMultiplesOfOcurrences() {
 		// Obtiene la cantidad de multiplos de 3 que contiene la lista
-		int amount = counter.getMultiplesOfOcurrences(3);
+		int amount = counter.getMultiplesOfAmount(3);
 		
 		// Chequea si la cantidad es la correcta
 		assertEquals(2, amount);
