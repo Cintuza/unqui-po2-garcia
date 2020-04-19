@@ -28,7 +28,7 @@ public class Multioperador {
 		int sumOfAll = 0;
 		for (int i = 0; i < this.getNumbers().size(); i++) {
 			Integer number = this.getNumbers().get(i);
-			sumOfAll = sumOfAll + number;
+			sumOfAll += number;
 		}
 		return sumOfAll;
 	}
