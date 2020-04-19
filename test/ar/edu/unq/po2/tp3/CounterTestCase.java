@@ -57,7 +57,7 @@ class CounterTestCase {
 	}
 	
 	@Test
-	public void testMultiplesOfOcurrences() {
+	public void testMultiplesOfAmount() {
 		
 		// Obtiene la cantidad de multiplos de 3 que contiene la lista
 		int amount = counter.getMultiplesOfAmount(3);
