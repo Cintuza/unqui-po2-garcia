@@ -1,21 +1,27 @@
 package ar.edu.unq.po2.tp4;
 
 public class ProductoPrimeraNecesidad extends Producto {
+	
+	private Double descuento;
 
-	public ProductoPrimeraNecesidad(String nombre, Double precio) {
+	public ProductoPrimeraNecesidad(String nombre, Double precio, Double descuento) {
 		super(nombre, precio);
+		this.descuento = descuento;
 	}
 	
-	public ProductoPrimeraNecesidad(String nombre, Double precio, Boolean esPrecioCuidado) {
+	public ProductoPrimeraNecesidad(String nombre, Double precio, Boolean esPrecioCuidado, Double descuento) {
 		super(nombre, precio, esPrecioCuidado);
+		this.descuento = descuento;
+	}
+	
+	public Double getDescuento() {
+		return descuento;
 	}
 
 	@Override
 	public Double getPrecio() {
-		// descuento en porcentaje
-		double porcentajeDeDescuento = 10;
 		double precio = super.getPrecio();
-		double descuento = precio * porcentajeDeDescuento / 100;
+		double descuento = precio * getDescuento() / 100;
 		return precio - descuento;
 	}
 
