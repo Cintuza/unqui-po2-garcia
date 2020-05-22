@@ -1,4 +1,4 @@
-package ar.edu.unq.po2.tp6;
+package ar.edu.unq.po2.tp6.ClienteCorreo;
 
 import java.util.ArrayList;
 
