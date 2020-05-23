@@ -1,0 +1,27 @@
+La clase ServidorPop implementa la interfaz IServidor, por lo que
+debe incluir tres metodos que no utiliza, violando el principio de segregacion
+de interfaz. Como solucion se separa la interfaz IServidor en IServidorBasico
+e IServidorAvanzado, esta ultima con los tres mensajes que ServidorPop no utiliza.
+ServidorPop pasa entonces a implementar IServidorBasico, y deja de incluir metodos
+que no le corresponden.
+
+La clase ClienteEMail tiene la variable servidor, que se cambio para ser de tipo
+IServidorBasico en lugar de la clase ServidorPop. Esto permite que si la clase 
+ClienteEMail quiere dejar de utilizar ServidorPop por otro servidor basico, puede
+hacerlo sin tener que modifcar su codigo, por el polimorfismo que permite el uso
+de una interfaz. Esto permite cumplir con el principio de abierto/cerrado, ya que
+sin modificar el protocolo de ClienteEMail, esta clase puede utilizar cualquier 
+sevidor que implemente la interfaz. Tambien se cumple de esta manera el principio 
+de substitucion de Liskov, ya que la interfaz IServidorBasico pudo reemplazar sin 
+problemas a la clase que la implementa.
+
+Por otro lado, la clase ClienteEMail fue subdividida para poder cumplir con el 
+principio de responsabilidad unica, dejando solo en su protocolo los mensajes
+relacionados con la conexion al servidor. Los mensajes relacionados con el manejo 
+de las listas de correo fueron delegadas a otra clase, CasillaDeCorreos.
+
+A su vez, CasillaDeCorreos delego el manejo de correos de cada lista a otra clase,
+CarpetaDeCorreos, para cumplir con el principio de abierto/cerrado. De esta forma,
+si se decide implementar otra carpeta con los correos enviados, por ejemplo, solo
+es necesario agregar a la CasillaDeCorreo una nueva carpeta, pero todo su 
+funcionamiento sera delegado a la clase CarpetaDeCorreos. 
