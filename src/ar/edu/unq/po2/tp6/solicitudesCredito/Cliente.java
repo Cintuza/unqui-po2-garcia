@@ -1,4 +1,4 @@
-package ar.edu.unq.po2.tp6.SolicitudesCredito;
+package ar.edu.unq.po2.tp6.solicitudesCredito;
 
 public class Cliente {
 	

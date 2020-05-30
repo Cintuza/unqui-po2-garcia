@@ -1,4 +1,4 @@
-package ar.edu.unq.po2.tp6.ClienteCorreo;
+package ar.edu.unq.po2.tp6.clienteCorreo;
 
 public class Correo {
 

@@ -1,12 +1,15 @@
-package ar.edu.unq.po2.tp6.SolicitudesCredito;
+package ar.edu.unq.po2.tp6.solicitudesCredito;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import static org.mockito.Mockito.*;
-
 import org.junit.jupiter.api.*;
 
-class SolicitudDeCreditoPersonalTest {
+import ar.edu.unq.po2.tp6.solicitudesCredito.Cliente;
+import ar.edu.unq.po2.tp6.solicitudesCredito.SolicitudDeCreditoPersonal;
+
+import static org.mockito.Mockito.*;
+
+public class SolicitudDeCreditoPersonalTest {
 	
 	private Cliente cliente;
 	private SolicitudDeCreditoPersonal solicitud;
