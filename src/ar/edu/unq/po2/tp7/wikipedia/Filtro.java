@@ -17,7 +17,7 @@ public abstract class Filtro {
 		List<WikipediaPage> paginasSimilares = new ArrayList<WikipediaPage>();
 		
 		for (WikipediaPage wikipediaPage : wikipedia) {
-			if(this.esSimilar(pagina, wikipediaPage))
+			if(esSimilar(pagina, wikipediaPage))
 				paginasSimilares.add(wikipediaPage);
 		}
 		
@@ -25,8 +25,6 @@ public abstract class Filtro {
 	}
 
 	
-	public Boolean esSimilar(WikipediaPage pagina, WikipediaPage wikipediaPage) {
-		return false;
-	}
+	public abstract Boolean esSimilar(WikipediaPage pagina, WikipediaPage otraPagina);
 	
 }
