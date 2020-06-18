@@ -61,26 +61,4 @@ public class PokerStatus {
 		
 		return esColor;
 	}
-
-	/*
-	private String obtenerValor(String carta) {
-		String valorDeCarta;
-		if (carta.length() == 2) {
-			valorDeCarta = carta.substring(0, 1);
-		} else {
-			valorDeCarta = carta.substring(0, 2);
-		}
-		return valorDeCarta;
-	}
-	
-	private String obtenerPalo(String carta) {
-		String paloDeCarta;
-		if (carta.length() == 2) {
-			paloDeCarta = carta.substring(1);
-		} else {
-			paloDeCarta = carta.substring(2);
-		}
-		return paloDeCarta;
-	}
-	*/
 }

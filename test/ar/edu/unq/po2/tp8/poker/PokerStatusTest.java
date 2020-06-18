@@ -1,65 +1,43 @@
 package ar.edu.unq.po2.tp8.poker;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.*;
 
 class PokerStatusTest {
 	
 	private PokerStatus pokerStatus;
 	
-	private Carta ochoC;
-	private Carta cincoT;
-	private Carta ochoD;
-	private Carta ochoP;
-	private Carta ochoT;
-	private Carta asC;
-	private Carta diezD;
-	private Carta diezC;
-	private Carta diezP;
-	private Carta diezT;
-	private Carta jackP;
-	private Carta jackC;
-	private Carta jackD;
-	private Carta jackT;
-	private Carta kingC;
-	private Carta kingP;
-	private Carta kingT;
-	private Carta asT;
-	private Carta tresT;
-	private Carta tresD;
+	private Carta carta1;
+	private Carta carta2;
+	private Carta carta3;
+	private Carta carta4;
+	private Carta carta5;
 	
 	
 	@BeforeEach
 	public void setUp() {
 		pokerStatus = new PokerStatus();
+
+		carta1 = mock(Carta.class);
+		carta2 = mock(Carta.class);
+		carta3 = mock(Carta.class);
+		carta4 = mock(Carta.class);
+		carta5 = mock(Carta.class);
 		
-		ochoC = new Carta(ValorCartas.OCHO, PaloCartas.CORAZON);
-		cincoT = new Carta(ValorCartas.CINCO, PaloCartas.TREBOL);
-		ochoD = new Carta(ValorCartas.OCHO, PaloCartas.DIAMANTE);
-		ochoP = new Carta(ValorCartas.OCHO, PaloCartas.PICA);
-		ochoT = new Carta(ValorCartas.OCHO, PaloCartas.TREBOL);
-		asC = new Carta(ValorCartas.AS, PaloCartas.CORAZON);
-		diezD = new Carta(ValorCartas.DIEZ, PaloCartas.DIAMANTE);
-		diezC = new Carta(ValorCartas.DIEZ, PaloCartas.CORAZON);
-		diezP = new Carta(ValorCartas.DIEZ, PaloCartas.PICA);
-		diezT = new Carta(ValorCartas.DIEZ, PaloCartas.TREBOL);
-		jackP = new Carta(ValorCartas.JACK, PaloCartas.PICA);
-		jackC = new Carta(ValorCartas.JACK, PaloCartas.CORAZON);
-		jackD = new Carta(ValorCartas.JACK, PaloCartas.DIAMANTE);
-		jackT = new Carta(ValorCartas.JACK, PaloCartas.TREBOL);
-		kingC = new Carta(ValorCartas.KING, PaloCartas.CORAZON);
-		kingP = new Carta(ValorCartas.KING, PaloCartas.PICA);
-		kingT = new Carta(ValorCartas.KING, PaloCartas.TREBOL);
-		asT = new Carta(ValorCartas.AS, PaloCartas.TREBOL);
-		tresT = new Carta(ValorCartas.TRES, PaloCartas.TREBOL);
-		tresD = new Carta(ValorCartas.TRES, PaloCartas.DIAMANTE);
 	}
 
 	@Test
 	public void testEsPokerCon8() {
+		// setUp
+		when(carta1.getValor()).thenReturn("OCHO");
+		when(carta2.getValor()).thenReturn("CINCO");
+		when(carta3.getValor()).thenReturn("OCHO");
+		when(carta4.getValor()).thenReturn("OCHO");
+		when(carta5.getValor()).thenReturn("OCHO");
+		
 		// exercise
-		String esPoker = pokerStatus.verificar(ochoC, cincoT, ochoD, ochoP, ochoT);
+		String esPoker = pokerStatus.verificar(carta1, carta2, carta3, carta4, carta5);
 		
 		// verify
 		assertEquals("Poker", esPoker);
@@ -67,8 +45,15 @@ class PokerStatusTest {
 
 	@Test
 	public void testEsPokerCon10() {
+		// setUp
+		when(carta1.getValor()).thenReturn("AS");
+		when(carta2.getValor()).thenReturn("DIEZ");
+		when(carta3.getValor()).thenReturn("DIEZ");
+		when(carta4.getValor()).thenReturn("DIEZ");
+		when(carta5.getValor()).thenReturn("DIEZ");
+		
 		// exercise
-		String esPoker = pokerStatus.verificar(asC, diezD, diezC, diezP, diezT);
+		String esPoker = pokerStatus.verificar(carta1, carta2, carta3, carta4, carta5);
 
 		// verify
 		assertEquals("Poker", esPoker);
@@ -76,8 +61,15 @@ class PokerStatusTest {
 
 	@Test
 	public void testEsPokerConJ() {
+		// setUp
+		when(carta1.getValor()).thenReturn("JACK");
+		when(carta2.getValor()).thenReturn("JACK");
+		when(carta3.getValor()).thenReturn("JACK");
+		when(carta4.getValor()).thenReturn("JACK");
+		when(carta5.getValor()).thenReturn("DIEZ");
+		
 		// exercise
-		String esPoker = pokerStatus.verificar(jackC, jackT, jackD, jackP, diezT);
+		String esPoker = pokerStatus.verificar(carta1, carta2, carta3, carta4, carta5);
 
 		// verify
 		assertEquals("Poker", esPoker);
@@ -85,8 +77,22 @@ class PokerStatusTest {
 
 	@Test
 	public void testNoEsNada() {
+		// setUp valores
+		when(carta1.getValor()).thenReturn("KING");
+		when(carta2.getValor()).thenReturn("CINCO");
+		when(carta3.getValor()).thenReturn("TRES");
+		when(carta4.getValor()).thenReturn("KING");
+		when(carta5.getValor()).thenReturn("DIEZ");
+		// setUp palos
+		when(carta1.
+				getPalo()).thenReturn("CORAZON");
+		when(carta2.getPalo()).thenReturn("TREBOL");
+		when(carta3.getPalo()).thenReturn("DIAMANTE");
+		when(carta4.getPalo()).thenReturn("PICA");
+		when(carta5.getPalo()).thenReturn("TREBOL");
+		
 		// exercise
-		String esPoker = pokerStatus.verificar(kingC, cincoT, tresD, kingP, diezT);
+		String esPoker = pokerStatus.verificar(carta1, carta2, carta3, carta4, carta5);
 
 		// verify
 		assertEquals("Nada", esPoker);
@@ -94,8 +100,15 @@ class PokerStatusTest {
 	
 	@Test
 	public void esTrioConK() {
+		// setUp
+		when(carta1.getValor()).thenReturn("KING");
+		when(carta2.getValor()).thenReturn("CINCO");
+		when(carta3.getValor()).thenReturn("TRES");
+		when(carta4.getValor()).thenReturn("KING");
+		when(carta5.getValor()).thenReturn("KING");
+		
 		// exercise
-		String esTrio = pokerStatus.verificar(kingC, cincoT, tresD, kingP, kingT);
+		String esTrio = pokerStatus.verificar(carta1, carta2, carta3, carta4, carta5);
 
 		// verify
 		assertEquals("Trio", esTrio);
@@ -103,8 +116,15 @@ class PokerStatusTest {
 	
 	@Test
 	public void esColorConTrebol() {
+		// setUp
+		when(carta1.getPalo()).thenReturn("TREBOL");
+		when(carta2.getPalo()).thenReturn("TREBOL");
+		when(carta3.getPalo()).thenReturn("TREBOL");
+		when(carta4.getPalo()).thenReturn("TREBOL");
+		when(carta5.getPalo()).thenReturn("TREBOL");
+		
 		// exercise
-		String esColor = pokerStatus.verificar(asT, cincoT, tresT, diezT, kingT);
+		String esColor = pokerStatus.verificar(carta1, carta2, carta3, carta4, carta5);
 		
 		// verify
 		assertEquals("Color", esColor);
