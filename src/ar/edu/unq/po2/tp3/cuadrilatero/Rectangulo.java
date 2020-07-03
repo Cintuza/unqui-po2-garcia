@@ -1,8 +1,9 @@
-package ar.edu.unq.po2.tp3;
+package ar.edu.unq.po2.tp3.cuadrilatero;
 
-public class Rectangulo {
+import ar.edu.unq.po2.tp3.Point;
+
+public class Rectangulo extends Cuadrilatero {
 	
-	private Point esquinaSuperiorIzquierda;
 	private float base;
 	private float altura;
 
@@ -13,14 +14,9 @@ public class Rectangulo {
 	 * @param altura la altura del rectangulo, tipo float
 	 */
 	public Rectangulo(Point esquinaSuperiorIzquierda, float base, float altura) {
-		this.esquinaSuperiorIzquierda = esquinaSuperiorIzquierda;
+		super(esquinaSuperiorIzquierda);
 		this.base = base;
 		this.altura = altura;
-		// TODO Auto-generated constructor stub
-	}
-
-	public Point getEsquinaSuperiorIzquierda() {
-		return esquinaSuperiorIzquierda;
 	}
 
 	public float getBase() {
@@ -29,10 +25,6 @@ public class Rectangulo {
 
 	public float getAltura() {
 		return altura;
-	}
-
-	public void setEsquinaSuperiorIzquierda(Point esquinaSuperiorIzquierda) {
-		this.esquinaSuperiorIzquierda = esquinaSuperiorIzquierda;
 	}
 
 	public void setBase(float base) {
