@@ -2,17 +2,14 @@ package ar.edu.unq.po2.tp9.publicaciones;
 
 import java.util.List;
 
-public class SuscripcionPorPalabraClave implements Suscripcion {
+public class SuscripcionPorPalabraClave extends Suscripcion {
 	
-	private Investigadora investigadoraSuscripta;
 	private List<String> palabrasClaveDeInteres;
-	private SistemaDePublicaciones sistema;
 
 	public SuscripcionPorPalabraClave(Investigadora investigadoraSuscripta, List<String> palabrasClaveDeInteres,
 			SistemaDePublicaciones sistema) {
-		this.investigadoraSuscripta = investigadoraSuscripta;
+		super(investigadoraSuscripta, sistema);
 		this.palabrasClaveDeInteres = palabrasClaveDeInteres;
-		this.sistema = sistema;
 	}
 
 	@Override
@@ -23,21 +20,13 @@ public class SuscripcionPorPalabraClave implements Suscripcion {
 		}
 		return tienePalabraClave;
 	}
-
-	@Override
-	public void observarSistema(SistemaDePublicaciones sistema) {
-		sistema.agregarSuscripcion(this);
-	}
-
-	@Override
-	public void updateInvestigadoras(Articulo articulo) {
-		if (esDeInteres(articulo)) {
-			investigadoraSuscripta.updateInvestigadora(articulo);
-		}
-	}
 	
 	public void agregarPalabraClaveDeInteres(String palabraClave) {
 		palabrasClaveDeInteres.add(palabraClave);
+	}
+	
+	public void eliminarPalabraClaveDeInteres(String palabraClave) {
+		palabrasClaveDeInteres.remove(palabraClave);
 	}
 
 }

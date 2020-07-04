@@ -1,23 +1,19 @@
 package ar.edu.unq.po2.tp9.publicaciones;
 
-import java.util.List;
+import java.util.*;
 
 public class Investigadora {
 	
 	private String nombre;
-	private String filiacion;
+	private List<Suscripcion> suscripciones;
 	
-	public Investigadora(String nombre, String filiacion) {
+	public Investigadora(String nombre) {
 		this.nombre = nombre;
-		this.filiacion = filiacion;
+		suscripciones = new ArrayList<Suscripcion>();
 	}
 
 	public String getNombre() {
 		return nombre;
-	}
-
-	public String getFiliacion() {
-		return filiacion;
 	}
 	
 	public void updateInvestigadora(Articulo articulo) {
@@ -27,6 +23,14 @@ public class Investigadora {
 	public String avisarLlegadaArticulo(Articulo articulo) {
 		String titulo = articulo.getTitulo().toString();
 		return "Esta disponible el siguiente articulo de su interes: " + titulo;
+	}
+	
+	public void agregarSuscripcion(Suscripcion suscripcion) {
+		suscripciones.add(suscripcion);
+	}
+	
+	public void eliminarSuscripcion(Suscripcion suscripcion) {
+		suscripciones.remove(suscripcion);
 	}
 	
 }

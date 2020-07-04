@@ -10,7 +10,7 @@ class InvestigadoraTest {
 
 	@Test
 	void testSeLanzaAvisoSobreLlegadaDeArticuloDeInteres() {
-		Investigadora investigadora = new Investigadora ("Sandra Goni", "Universidad Nacional de Quilmes");
+		Investigadora investigadora = new Investigadora ("Sandra Goni");
 		Articulo articulo = mock(Articulo.class);
 		when(articulo.getTitulo()).thenReturn("Virologia");
 		

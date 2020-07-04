@@ -21,7 +21,11 @@ public class SistemaDePublicaciones {
 		suscripciones.add(suscripcion);
 	}
 	
-	public void notificarSuscriptoras(Articulo articulo) {
+	public void eliminarSuscripcion(Suscripcion suscripcion) {
+		suscripciones.remove(suscripcion);
+	}
+	
+	private void notificarSuscriptoras(Articulo articulo) {
 		for (Suscripcion suscripcion : suscripciones) {
 			suscripcion.updateInvestigadoras(articulo);
 		}

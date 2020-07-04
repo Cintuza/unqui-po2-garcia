@@ -2,17 +2,14 @@ package ar.edu.unq.po2.tp9.publicaciones;
 
 import java.util.List;
 
-public class SuscripcionPorAutoras implements Suscripcion {
+public class SuscripcionPorAutoras extends Suscripcion {
 	
-	private Investigadora investigadoraSuscripta;
 	private List<String> autorasDeInteres;
-	private SistemaDePublicaciones sistema;
 	
 	public SuscripcionPorAutoras(Investigadora investigadoraSuscripta, 
 			List<String> autorasDeInteres, SistemaDePublicaciones sistema) {
-		this.investigadoraSuscripta = investigadoraSuscripta;
+		super(investigadoraSuscripta, sistema);
 		this.autorasDeInteres = autorasDeInteres;
-		this.sistema = sistema;
 	}
 
 	@Override
@@ -23,21 +20,13 @@ public class SuscripcionPorAutoras implements Suscripcion {
 		}
 		return tieneAutora;
 	}
-
-	@Override
-	public void updateInvestigadoras(Articulo articulo) {
-		if (esDeInteres(articulo)) {
-			investigadoraSuscripta.updateInvestigadora(articulo);
-		}
-	}
 	
 	public void agregarAutoraDeInteres(String autora) {
 		autorasDeInteres.add(autora);
 	}
-
-	@Override
-	public void observarSistema(SistemaDePublicaciones sistema) {
-		sistema.agregarSuscripcion(this);
+	
+	public void eliminarAutoraDeInteres(String autora) {
+		autorasDeInteres.remove(autora);
 	}
 
 }
