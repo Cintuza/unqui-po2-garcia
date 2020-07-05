@@ -36,18 +36,6 @@ public class Cliente {
 		return sueldoNeto;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
-	}
-
 	public void setEdad(Integer edad) {
 		if (edad <= 18) {
 			throw new IllegalArgumentException("La persona tiene que ser mayor de 18 anos");
