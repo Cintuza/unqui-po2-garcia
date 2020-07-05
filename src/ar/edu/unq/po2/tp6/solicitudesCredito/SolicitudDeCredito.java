@@ -1,6 +1,6 @@
 package ar.edu.unq.po2.tp6.solicitudesCredito;
 
-public class SolicitudDeCredito {
+public abstract class SolicitudDeCredito {
 	
 	private Cliente cliente;
 	private Double montoSolicitado;
@@ -25,10 +25,13 @@ public class SolicitudDeCredito {
 	}
 	
 	/**
-	 * Devuelve el monto correspondiente a la cuota mensual, resultente de la division entre montoSolicitado y plazo y pago
+	 * Devuelve el monto correspondiente a la cuota mensual, resultente de 
+	 * la division entre montoSolicitado y plazo y pago
 	 */
 	public Double montoCuotaMensual() {
 		return getMontoSolicitado() / getPlazoDePago();
 	}
+	
+	public abstract Boolean esAceptable();
 	
 }

@@ -8,6 +8,13 @@ public class SolicitudDeCreditoPersonal extends SolicitudDeCredito {
 		super(cliente, montoSolicitado, plazoDePago);
 	}
 
+	/**
+	 * Chequea que la solicitud cumpla con los requisitos para ser aceptable:
+	 * - ingresos minimos anuales mayor al monto anual minimo
+	 * - cuota mensual menor al 70 porciento del sueldo mensual
+	 * @return true si cumple con las dos condiciones mencionadas, false caso contrario
+	 */
+	@Override
 	public Boolean esAceptable() {
 		//setea el monto anual minimo
 		Double montoAnualMinimo = 15000d;
