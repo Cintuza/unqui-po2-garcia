@@ -2,13 +2,13 @@ package ar.edu.unq.po2.tp9.publicaciones;
 
 import java.util.List;
 
-public class SuscripcionPorLugarDePublicacion extends Suscripcion {
+public class InteresEnLugarDePublicacion extends Interes {
 	
 	private List<String> lugaresDePublicacionDeInteres;
 
-	public SuscripcionPorLugarDePublicacion(Investigadora investigadoraSuscripta,
-			List<String> lugaresDePublicacionDeInteres, SistemaDePublicaciones sistema) {
-		super(investigadoraSuscripta, sistema);
+	public InteresEnLugarDePublicacion(Investigadora investigadoraSuscripta,
+			List<String> lugaresDePublicacionDeInteres) {
+		super(investigadoraSuscripta);
 		this.lugaresDePublicacionDeInteres = lugaresDePublicacionDeInteres;
 	}
 

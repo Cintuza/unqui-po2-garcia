@@ -9,21 +9,28 @@ import org.mockito.Mock;
 class SistemaDePublicacionesTest {
 	
 	private SistemaDePublicaciones sistema;
-	private SuscripcionPorAutoras suscripcionPorAutoras;
+	private Investigadora investigadora1;
+	private Investigadora investigadora2;
 	
 	@BeforeEach
 	public void setUp() {
 		sistema = new SistemaDePublicaciones();
-		suscripcionPorAutoras = mock(SuscripcionPorAutoras.class);
+		investigadora1 = mock(Investigadora.class);
+		investigadora2 = mock(Investigadora.class);
 	}
 
 	@Test
-	public void testSeAgregaUnArticuloYSeInformaALasSuscripciones() {
+	public void testSeAgregaUnArticuloYSeInformaALasInvestigadorasQueEstanInteresadas() {
 		Articulo articulo = mock(Articulo.class);
-		sistema.agregarSuscripcion(suscripcionPorAutoras);
-		sistema.agregarArticulo(articulo);
+		sistema.agregarInvestigadora(investigadora1);
+		when(investigadora1.estaInteresadaEn(articulo)).thenReturn(false);
+		sistema.agregarInvestigadora(investigadora2);
+		when(investigadora2.estaInteresadaEn(articulo)).thenReturn(true);
 		
-		verify(suscripcionPorAutoras).updateInvestigadoras(articulo);
+		sistema.agregarArticulo(articulo);
+
+		verify(investigadora1, never()).updateInvestigadora(articulo);
+		verify(investigadora2).updateInvestigadora(articulo);
 	}
 
 }

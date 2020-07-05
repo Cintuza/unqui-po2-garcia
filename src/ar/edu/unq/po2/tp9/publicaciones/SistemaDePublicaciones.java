@@ -5,29 +5,31 @@ import java.util.*;
 public class SistemaDePublicaciones {
 
 	private List<Articulo> articulos;
-	private List<Suscripcion> suscripciones;
+	private List<Investigadora> investigadoras;
 	
 	public SistemaDePublicaciones() {
 		this.articulos = new ArrayList<Articulo>();
-		this.suscripciones = new ArrayList<Suscripcion>();
+		this.investigadoras = new ArrayList<Investigadora>();
 	}
 	
 	public void agregarArticulo(Articulo articulo) {
 		articulos.add(articulo);
-		notificarSuscriptoras(articulo);
+		notificarInvestigadoras(articulo);
 	}
 	
-	public void agregarSuscripcion(Suscripcion suscripcion) {
-		suscripciones.add(suscripcion);
+	public void agregarInvestigadora(Investigadora investigadora) {
+		investigadoras.add(investigadora);
 	}
 	
-	public void eliminarSuscripcion(Suscripcion suscripcion) {
-		suscripciones.remove(suscripcion);
+	public void eliminarInvestigadora(Investigadora investigadora) {
+		investigadoras.remove(investigadora);
 	}
 	
-	private void notificarSuscriptoras(Articulo articulo) {
-		for (Suscripcion suscripcion : suscripciones) {
-			suscripcion.updateInvestigadoras(articulo);
+	private void notificarInvestigadoras(Articulo articulo) {
+		for (Investigadora investigadora : investigadoras) {
+			if (investigadora.estaInteresadaEn(articulo)) {
+				investigadora.updateInvestigadora(articulo);
+			}
 		}
 	}
 }
