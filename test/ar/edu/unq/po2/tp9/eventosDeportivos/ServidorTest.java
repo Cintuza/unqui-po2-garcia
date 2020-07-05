@@ -16,7 +16,7 @@ class ServidorTest {
 	}
 
 	@Test
-	void testServidorSeSuscribeADeportesYDeportesLoAgreganComoObservador() {
+	public void testServidorSeSuscribeADeportesYDeportesLoAgreganComoObservador() {
 		Deporte futbol = mock(Deporte.class);
 		Deporte voley = mock(Deporte.class);
 		
@@ -25,6 +25,28 @@ class ServidorTest {
 		
 		verify(voley).agregarServidor(servidor);
 		verify(futbol).agregarServidor(servidor);
+	}
+	
+	@Test
+	public void testServidorNotificaALasAplicacionesInteresadas() {
+		AplicacionMovil aplicacion1 = mock(AplicacionMovil.class);
+		AplicacionMovil aplicacion2 = mock(AplicacionMovil.class);
+		AplicacionMovil aplicacion3 = mock(AplicacionMovil.class);
+		Partido atlantaVsChacarita = mock(Partido.class);
+
+		when(aplicacion1.estaInteresadaEn(atlantaVsChacarita)).thenReturn(true);
+		when(aplicacion2.estaInteresadaEn(atlantaVsChacarita)).thenReturn(false);
+		when(aplicacion3.estaInteresadaEn(atlantaVsChacarita)).thenReturn(true);
+
+		servidor.agregarAplicacionMovil(aplicacion1);
+		servidor.agregarAplicacionMovil(aplicacion2);
+		servidor.agregarAplicacionMovil(aplicacion3);
+		
+		servidor.agregarPartido(atlantaVsChacarita);
+
+		verify(aplicacion1).updateAplicacionMovil(atlantaVsChacarita);
+		verify(aplicacion2, never()).updateAplicacionMovil(atlantaVsChacarita);
+		verify(aplicacion3).updateAplicacionMovil(atlantaVsChacarita);
 	}
 
 }
