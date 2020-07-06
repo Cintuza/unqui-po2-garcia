@@ -3,7 +3,10 @@ package ar.edu.unq.po2.tp9.shapeShifter;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.*;
+
 
 class ShapeShifterTest {
 
@@ -33,13 +36,17 @@ class ShapeShifterTest {
 	void testLaProfundidadDeShapeShifter5Es3() {
 		assertEquals(3, shapeShifter5.deepest());
 	}
-	
 
 	@Test
-	void testLaProfundidadDeShape() {
+	void testLaProfundidadDeShape5Es1CuandoSeAplicaFlat() {
+		assertEquals(1, shapeShifter5.flat().deepest());
+	}
+	
+	@Test
+	void testObtieneLosValoresDelShapeShifter() {
+		List<Integer> valores = shapeShifter5.values();
 		
-		//assertEquals(1, shapeShifter4.flat().deepest());
-		System.out.println(shapeShifter5.values());
+		assertEquals(4, valores.size());
 	}
 
 }

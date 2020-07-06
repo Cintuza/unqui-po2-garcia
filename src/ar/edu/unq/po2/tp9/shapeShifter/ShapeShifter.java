@@ -36,26 +36,14 @@ public class ShapeShifter implements IShapeShifter {
 
 	@Override
 	public IShapeShifter flat() {
-		IShapeShifter shapeShifterFlat = this;
-		if (!this.listaDeIShapeShifter.isEmpty()) {
-			List<IShapeShifter> shapeShiftersFlat = new ArrayList<IShapeShifter>();
-			for (IShapeShifter shapeShifter : listaDeIShapeShifter) {
-				if (shapeShifter.deepest() == 0) {
-					shapeShiftersFlat.add(shapeShifter);
-				}
-				else {
-					shapeShiftersFlat.add(shapeShifter.flat());
-				}
-			}// agregar padre
-			// si no tiene hijes ni padre se devuelve a si misme
-			// si no tiene hijes pero si padre
-			//profundidad =+ 1;
-			this.listaDeIShapeShifter.removeAll(listaDeIShapeShifter);
-			for (IShapeShifter iShapeShifter : shapeShiftersFlat) {
-				this.listaDeIShapeShifter.add(iShapeShifter);
-			}			
+		if (this.deepest() > 1) {
+			List<IShapeShifter> shapeShifters = new ArrayList<IShapeShifter>();
+			for (Integer value : this.values()) {
+				shapeShifters.add(new ShapeShifter(value));
+			}
+			listaDeIShapeShifter = shapeShifters;
 		}
-		return shapeShifterFlat;
+		return this;
 	}
 
 	@Override
