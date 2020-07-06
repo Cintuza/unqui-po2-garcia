@@ -30,7 +30,7 @@ public class Servidor {
 		Pregunta preguntaEspecifica = this.cuestionario.getPreguntas().stream()
 				.filter(p -> p.getPregunta().equals(pregunta))
 				.collect(Collectors.toList()).get(0);
-		this.estado.notificarSegunCorresponda(this, preguntaEspecifica, respuesta, participante);
+		this.estado.evaluarRespuesta(this, preguntaEspecifica, respuesta, participante);
 	}
 
 	/**

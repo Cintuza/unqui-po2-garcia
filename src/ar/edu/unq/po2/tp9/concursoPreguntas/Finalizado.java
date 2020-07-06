@@ -9,7 +9,7 @@ public class Finalizado implements EstadoDeJuego{
 	}
 
 	@Override
-	public void notificarSegunCorresponda(Servidor servidor, Pregunta pregunta, Respuesta respuesta, Participante participante) throws Exception {
+	public void evaluarRespuesta(Servidor servidor, Pregunta pregunta, Respuesta respuesta, Participante participante) throws Exception {
 	     throw new Exception(Error.El_JUEGO_A_FINALIZADO.getValor());
 	
 	}

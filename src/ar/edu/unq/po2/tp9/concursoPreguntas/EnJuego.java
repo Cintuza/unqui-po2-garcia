@@ -8,7 +8,7 @@ public class EnJuego implements EstadoDeJuego {
 	}
 
 	@Override
-	public void notificarSegunCorresponda(Servidor servidor, Pregunta pregunta, Respuesta respuesta, Participante participante) {
+	public void evaluarRespuesta(Servidor servidor, Pregunta pregunta, Respuesta respuesta, Participante participante) {
 		
 		if(esRespuestaCorrecta(pregunta, respuesta)){
 			servidor.sumarPuntajeA(participante);

@@ -16,7 +16,7 @@ public class EsperandoParaComenzar implements EstadoDeJuego{
 	}
 
 	@Override
-	public void notificarSegunCorresponda(Servidor servidor, Pregunta pregunta, Respuesta respuesta, Participante participante) throws Exception {
+	public void evaluarRespuesta(Servidor servidor, Pregunta pregunta, Respuesta respuesta, Participante participante) throws Exception {
 		throw new Exception(Error.NO_ESTA_COMPLETO_EL_CUPO.getValor()); 
 	}
 	
