@@ -26,6 +26,13 @@ public class Servidor {
 		this.estado.agregarParticipanteAlJuego(this, participante);
 	}
 	
+	/**
+	 * Le pide a su estado que verifique que la respuesta sea correcta
+	 * @param pregunta en string, pasa a clase pregunta
+	 * @param respuesta respuesta dada por el participante
+	 * @param participante participante que responde
+	 * @throws Exception en caso de que el juego no haya comenzado o haya finalizado
+	 */
 	public void verificarRespuesta(String pregunta, Respuesta respuesta, Participante participante) throws Exception  {
 		Pregunta preguntaEspecifica = this.cuestionario.getPreguntas().stream()
 				.filter(p -> p.getPregunta().equals(pregunta))
@@ -60,6 +67,7 @@ public class Servidor {
 	}
 	
 	/**
+	 * Notifica que participante ha ganado la partida a todes les participantes.
 	 * @param se recibe por parametro el participante que ha ganado la partida.
 	 */
 	public void notificarATodosLosParticipantesElGanador(Participante participante) {
@@ -68,6 +76,11 @@ public class Servidor {
 		this.participantes.stream().forEach(p->p.recibirNotificacion(notificacion));	
 	}
 	
+	/**
+	 * Notifica respuesta correcta a participante.
+	 * @param participante part que ha respondido correctamente
+	 * @param pregunta pregunta respondida correctamente
+	 */
 	public void notificarRespuestaCorrectaA(Participante participante, Pregunta pregunta) {
 		participante.recibirRespuestaCorrecta(pregunta);
 	}
@@ -77,7 +90,6 @@ public class Servidor {
 	                           + "ha contestado correctamente la pregunta" + pregunta.getPregunta();
 		
 		this.getParticipantes().stream().forEach(p -> p.recibirNotificacion(notificacion));
-		
 	}
 
 	public void participanteConPuntajeInicial(IParticipante participante) {
