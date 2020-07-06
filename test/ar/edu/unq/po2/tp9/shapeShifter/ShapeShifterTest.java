@@ -40,6 +40,7 @@ class ShapeShifterTest {
 	@Test
 	void testLaProfundidadDeShape5Es1CuandoSeAplicaFlat() {
 		assertEquals(1, shapeShifter5.flat().deepest());
+		assertEquals(4, shapeShifter5.values().size());
 	}
 	
 	@Test
